@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" style="width:100%; height:100%; background:#0D1B2A;">
+  <!-- Grille de structure en arrière-plan -->
+  <path d="M 100 400 L 700 400 M 200 350 L 600 350" stroke="#1B2A4A" stroke-width="2" />
+  <!-- Cône de chantier de sécurité -->
+  <polygon points="400,120 450,420 350,420" fill="#E8A020" />
+  <!-- Bandes réfléchissantes du cône -->
+  <polygon points="383,220 417,220 423,260 377,260" fill="#FFFFFF" />
+  <polygon points="367,310 433,310 440,350 360,350" fill="#FFFFFF" />
+  <!-- Socle du cône -->
+  <ellipse cx="400" cy="420" rx="70" ry="15" fill="#1B2A4A" />
+</svg>

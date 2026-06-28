@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GET'COM — Recrutement</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet principale -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-main">GET'COM</span>
+        <span class="logo-sub">Marquage &amp; Signalisation</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Accueil</a></li>
+        <li><a href="expertises.html" class="nav-link">Expertises</a></li>
+        <li><a href="capacites.html" class="nav-link">Capacités</a></li>
+        <li><a href="projets.html" class="nav-link">Projets</a></li>
+        <li><a href="recrutement.html" class="nav-link active">Recrutement</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="tel:+33148111535" class="nav-tel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        01 48 11 15 35
+      </a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== PAGE HERO ========== -->
+  <header class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=1920');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content container">
+      <h1>Rejoignez <span class="gold">GET'COM</span></h1>
+      <p>Construisons ensemble l'avenir et la sécurité de nos infrastructures routières.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a> <span>&gt;</span> <span>Recrutement</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== CONTENU PRINCIPAL & FORMULAIRE ========== -->
+  <section class="section-light">
+    <div class="container contact-grid">
+      
+      <!-- Colonne Gauche : Arguments de Recrutement -->
+      <div class="capa-item" style="text-align: left; background: transparent; box-shadow: none; padding: 0;">
+        <div class="section-header">
+          <h2>Pourquoi nous <span class="gold">rejoindre</span> ?</h2>
+          <div class="gold-bar" style="margin: 0.5rem 0 0 0;"></div>
+        </div>
+        <p class="section-desc" style="font-size: 1rem; margin-bottom: 2.5rem; color: var(--gray-600);">
+          Intégrer GET'COM, c'est rejoindre une entreprise à taille humaine spécialisée dans les infrastructures de transport et de sécurité. Nous valorisons la transmission des compétences et l'engagement opérationnel.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div class="methodo-card">
+            <div class="methodo-icon" style="min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--white); border-radius: 50%; font-weight: bold;">01</div>
+            <div>
+              <h4>Innovation & Équipement</h4>
+              <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Vous travaillerez au quotidien avec des technologies récentes (systèmes de traçage INOVI, applicateurs de résine automatisés) et une flotte de véhicules modernes adaptés aux enjeux environnementaux.</p>
+            </div>
+          </div>
+          <div class="methodo-card">
+            <div class="methodo-icon" style="min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--white); border-radius: 50%; font-weight: bold;">02</div>
+            <div>
+              <h4>Culture de la Sécurité</h4>
+              <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">La préservation de la santé de nos collaborateurs est notre priorité absolue. Nous fournissons des EPI haut de gamme et appliquons des règles HSE strictes pour sécuriser nos chantiers, de jour comme de nuit.</p>
+            </div>
+          </div>
+          <div class="methodo-card">
+            <div class="methodo-icon" style="min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--white); border-radius: 50%; font-weight: bold;">03</div>
+            <div>
+              <h4>Évolution Interne</h4>
+              <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Aux côtés d'experts du marquage cumulant plus de 30 ans de métier, vous développerez des compétences recherchées. Nous encourageons la formation continue et l'évolution vers des postes d'encadrement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne Droite : Formulaire Dupliqué & Adapté pour le Recrutement -->
+      <div class="contact-form">
+        <h3>Candidature Spontanée</h3>
+        
+        <!-- Messages de statut gérés par le JS -->
+        <div class="form-success" id="recrutementSuccess" style="display: none;">✅ Candidature transmise avec succès ! Nos équipes RH reviennent vers vous sous 48h.</div>
+        <div class="form-error" id="recrutementError" style="display: none;">❌ Une erreur est survenue lors de l'envoi.</div>
+
+        <form action="https://formspree.io/f/xeewkkbw" method="POST" id="recrutementForm" enctype="multipart/form-data">
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin: 0;">
+              <label>Nom *</label>
+              <input type="text" name="nom" required autocomplete="family-name">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label>Prénom *</label>
+              <input type="text" name="prenom" required autocomplete="given-name">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="form-group" style="margin: 0;">
+              <label>Email *</label>
+              <input type="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label>Téléphone *</label>
+              <input type="tel" name="telephone" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Poste souhaité *</label>
+            <select name="poste" required style="width: 100%; padding: .75rem 1rem; border: 1px solid var(--gray-300); border-radius: .75rem; font-size: 1rem; font-family: var(--font-body); background: var(--white); outline: none;">
+              <option value="">-- Choisissez un poste --</option>
+              <option value="Applicateur">Applicateur / Traçeur Routier</option>
+              <option value="Chef d'Équipe">Chef d'Équipe Marquage</option>
+              <option value="Conducteur de Travaux">Conducteur de Travaux</option>
+              <option value="Autre">Autre (Candidature spontanée)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message de motivation / Parcours</label>
+            <textarea name="message" rows="4" placeholder="Présentez brièvement vos motivations ou vos permis (PL, CACES...)"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-full" id="recrutementSubmitBtn">
+            <span>Envoyer ma candidature</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="chat-button" onclick="toggleChat()" style="position: fixed; bottom: 25px; right: 25px; background: var(--gold, #E8A020); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.2s;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+</div>
+
+<div id="chat-box" style="display: none; position: fixed; bottom: 95px; right: 25px; width: 340px; height: 460px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); flex-direction: column; overflow: hidden; z-index: 9999; font-family: 'Inter', sans-serif; border: 1px solid rgba(0,0,0,0.1);">
+  <div style="background: var(--navy, #0A0F1E); color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; letter-spacing: 0.5px;">
+    <span>Assistant GET'COM</span>
+    <span onclick="toggleChat()" style="cursor: pointer; font-size: 20px; line-height: 1; padding: 0 5px;">&times;</span>
+  </div>
+  
+  <div id="chat-body" style="padding: 15px; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 10px; background: #f9fafb;">
+  </div>
+
+  <div style="padding: 10px; background: #fff; border-top: 1px solid #eee; display: flex; gap: 8px;">
+    <input type="text" id="chat-input" onkeypress="handleKeyPress(event)" placeholder="Posez votre question ici..." style="flex-grow: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.85rem; outline: none; font-family: 'Inter', sans-serif;">
+    <button onclick="handleSend()" style="background: var(--navy, #0A0F1E); color: #fff; border: none; padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 500;">Ok</button>
+  </div>
+</div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <a href="index.html" class="logo">
+          <span class="logo-main">GET'COM</span>
+          <span class="logo-sub">Voirie &amp; Signalisation</span>
+        </a>
+        <p>Expert de la sécurité et du marquage au sol pour professionnels et collectivités en Île-de-France.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="expertises.html">Expertises</a></li>
+          <li><a href="capacites.html">Capacités</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="recrutement.html">Recrutement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: middle;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Gennevilliers, Île-de-France
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: middle;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:contact@getcom.fr">contact@getcom.fr</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 GET'COM. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
