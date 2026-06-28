@@ -446,10 +446,10 @@ ul  { list-style: none; }
 }
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Changé de 4 à 3 */
   gap: 1.5rem;
   padding-top: 4rem;
-  max-width: 64rem;
+  max-width: 54rem; /* Réduit un peu pour garder des cartes proportionnées */
   margin-left: auto;
   margin-right: auto;
 }
