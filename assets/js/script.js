@@ -219,132 +219,128 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ---------- MODULE CHATBOT PAR MOTS-CLÉS GET'COM ---------- */
+/* ---------- MODULE CHATBOT FLOUTANT GET'COM ---------- */
 
 function toggleChat() {
   const chatBox = document.getElementById('chat-box');
   if (chatBox.style.display === 'none' || chatBox.style.display === '') {
     chatBox.style.display = 'flex';
-    // Message de bienvenue initial si le chat est vide
     const body = document.getElementById('chat-body');
-    if (body.children.length === 0) {
+    if (body.children.length === 1) { // 1 correspond à l'overlay de la popup cachée
       addMessage("bot", "Bonjour ! Comment l'équipe GET'COM peut-elle vous aider aujourd'hui ? Pouvons-nous vous renseigner sur nos expertises, un devis ou nos recrutements ?");
     }
   } else {
     chatBox.style.display = 'none';
+    closePhonePopup();
   }
 }
 
-// Fonction pour ajouter un message à l'écran (Bot ou Utilisateur)
+/* --- LOGIQUE DE LA POP-UP FORMULAIRE --- */
+
+function openPhonePopup() {
+  document.getElementById('phone-popup').style.display = 'flex';
+  document.getElementById('popup-phone-input').focus();
+}
+
+function closePhonePopup() {
+  document.getElementById('phone-popup').style.display = 'none';
+}
+
+// Gestion de la soumission asynchrone du formulaire de la pop-up
+function submitPhonePopup(event) {
+  event.preventDefault(); // Empêche la redirection/rechargement de page Formspree
+
+  const form = document.getElementById('formspree-popup-form');
+  const phoneInput = document.getElementById('popup-phone-input');
+  const phoneValue = phoneInput.value.trim();
+
+  // Validation rapide du numéro
+  const phoneRegex = /^(?:(?:\+|00)33|0)[1-9](?:[\s.-]*\d{2}){4}$/;
+  if (!phoneRegex.test(phoneValue.replace(/\s/g, ''))) {
+    alert("Veuillez entrer un numéro de téléphone valide.");
+    phoneInput.focus();
+    return;
+  }
+
+  // On ferme la pop-up immédiatement pour fluidifier l'expérience
+  closePhonePopup();
+  addMessage("bot", "Transmission de votre demande de rappel à nos équipes...");
+
+  // Envoi des données du formulaire à Formspree via Fetch
+  const data = new FormData(form);
+  
+  fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      addMessage("bot", `C'est parfait ! Votre demande a bien été envoyée. Un conseiller GET'COM vous rappellera rapidement au ${phoneValue}.`);
+      form.reset(); // Vide les champs du formulaire pour la prochaine fois
+    } else {
+      addMessage("bot", "Une erreur est survenue. Veuillez nous contacter directement au 01 48 11 15 35.");
+    }
+  })
+  .catch(error => {
+    addMessage("bot", "Erreur réseau. Vous pouvez joindre notre secrétariat au 01 48 11 15 35.");
+  });
+}
+
+/* --- LOGIQUE STANDARD DU CHATBOT --- */
+
 function addMessage(sender, text) {
   const body = document.getElementById('chat-body');
   const msgDiv = document.createElement('div');
   msgDiv.className = sender === 'bot' ? 'bot-msg' : 'user-msg';
   msgDiv.innerText = text;
   body.appendChild(msgDiv);
-  body.scrollTop = body.scrollHeight; // Scroll automatique vers le bas
+  body.scrollTop = body.scrollHeight;
 }
 
-// Fonction pour envoyer le message de l'utilisateur
 function handleSend() {
   const input = document.getElementById('chat-input');
   const message = input.value.trim();
-  
   if (message === "") return;
 
-  // 1. Afficher le message de l'utilisateur
   addMessage('user', message);
-  input.value = ""; // Vide le champ
+  input.value = "";
 
-  // 2. Analyser le message (conversion en minuscules pour éviter les ratés)
   const lowerMsg = message.toLowerCase();
-  
   setTimeout(() => {
     analyzeMessage(lowerMsg);
-  }, 500); // Petit délai pour faire plus naturel
+  }, 500);
 }
 
-// Logique de reconnaissance des mots-clés enrichie
 function analyzeMessage(text) {
-  const body = document.getElementById('chat-body');
-  
-  // Normalisation du texte pour faciliter la correspondance (minuscules, sans accents complexes si besoin)
   const cleanText = text.toLowerCase().trim();
 
-  // 1. DEVIS / TARIFS / CONTACT
-  if (
-    cleanText.includes('devis') || cleanText.includes('rappel') || cleanText.includes('appeler') || 
-    cleanText.includes('téléphone') || cleanText.includes('prix') || cleanText.includes('tarif') || 
-    cleanText.includes('coût') || cleanText.includes('contact') || cleanText.includes('joindre')
-  ) {
-    addMessage('bot', "Pour étudier votre projet de voirie ou signalisation, nos équipes commerciales sont à votre disposition au 01 48 11 15 35 (ou 01 48 11 91 45 pour l'administration) et par mail à contact@getcom.fr.");
+  if (cleanText.includes('devis') || cleanText.includes('rappel') || cleanText.includes('appeler') || cleanText.includes('téléphone') || cleanText.includes('prix') || cleanText.includes('tarif') || cleanText.includes('coût') || cleanText.includes('contact')) {
+    addMessage('bot', "Pour étudier votre projet de voirie ou de signalisation, nos équipes sont disponibles au 01 48 11 15 35 ou par mail à contact@getcom.fr.");
     createLinkButton("Aller à la page Contact / Devis ➔", "contact.html");
   } 
-  
-  // 2. RÉGLEMENTATION PMR & NORMES TECHNIQUES
-  else if (cleanText.includes('pmr') || cleanText.includes('handicapé') || cleanText.includes('norme') || cleanText.includes('réglementaire') || cleanText.includes('iisr') || cleanText.includes('setra')) {
-    addMessage('bot', "Nos marquages PMR respectent strictement les normes : emplacement de 3,30m x 5m, lignes blanches, pictogramme fauteuil réglementaire et signalisation verticale obligatoire (panneau B6a1 + M6h).");
+  else if (cleanText.includes('pmr') || cleanText.includes('handicapé') || cleanText.includes('norme') || cleanText.includes('réglementaire')) {
+    addMessage('bot', "Nos marquages PMR respectent strictement les normes d'implantation (emplacement de 3,30m x 5m) et la signalisation verticale associée.");
     createLinkButton("Consulter nos expertises ➔", "expertises.html");
   }
-
-  // 3. HORAIRES / INTERVENTIONS DE NUIT / 24/7
-  else if (cleanText.includes('nuit') || cleanText.includes('horaire') || cleanText.includes('24h') || cleanText.includes('7j') || cleanText.includes('quand') || cleanText.includes('décalé')) {
-    addMessage('bot', "GET'COM assure des interventions en continu 24h/24 et 7j/7, de jour comme de nuit, afin de minimiser l'impact sur la fluidité du trafic et de garantir une remise en circulation rapide.");
+  else if (cleanText.includes('nuit') || cleanText.includes('horaire') || cleanText.includes('24h') || cleanText.includes('7j')) {
+    addMessage('bot', "GET'COM assure des interventions modulables 24h/24 et 7j/7 (de jour comme de nuit) pour ne pas perturber votre trafic.");
     createLinkButton("Découvrir nos capacités ➔", "capacites.html");
   }
-
-  // 4. CERTIFICATIONS & ENGAGEMENTS (MASE, ISO, RSE)
-  else if (
-    cleanText.includes('mase') || cleanText.includes('iso') || cleanText.includes('qualibat') || 
-    cleanText.includes('ecovadis') || cleanText.includes('certification') || cleanText.includes('label') || cleanText.includes('rse')
-  ) {
-    addMessage('bot', "GET'COM est hautement qualifié : nous disposons de la certification MASE (Sécurité/Environnement), de la norme ISO 9001 (Qualité), du label QUALIBAT et d'une évaluation RSE par EcoVadis.");
-    createLinkButton("Voir nos engagements ➔", "index.html#certifs");
-  }
-
-  // 5. ZONE GÉOGRAPHIQUE / ADRESSE
-  else if (cleanText.includes('adresse') || cleanText.includes('lieu') || cleanText.includes('situé') || cleanText.includes('zone') || cleanText.includes('intervenez') || cleanText.includes('idf') || cleanText.includes('gennevilliers') || cleanText.includes('france')) {
-    addMessage('bot', "Notre siège est situé à Gennevilliers (10-12 boulevard Louise Michel). Nous intervenons sur toute l'Île-de-France (56% de nos chantiers) ainsi que sur les départements limitrophes pour les grands projets.");
-    createLinkButton("Nous situer sur la carte ➔", "contact.html");
-  }
-
-  // 6. FLOTTE / PARC MATÉRIEL / ENVIRONNEMENT
-  else if (cleanText.includes('matériel') || cleanText.includes('machine') || cleanText.includes('camion') || cleanText.includes('fourgon') || cleanText.includes('inovi') || cleanText.includes('led') || cleanText.includes('écologique') || cleanText.includes('crit')) {
-    addMessage('bot', "Nous possédons un parc éco-responsable conforme aux exigences ZFE (Crit'Air). Nos fourgons traceurs éco-INOVI réduisent les émissions polluantes et nous utilisons des balisages lumineux LED haute visibilité.");
-    createLinkButton("Découvrir notre flotte éco ➔", "capacites.html");
-  }
-
-  // 7. EXPERTISES GLOBALES (Signalisation Horizontale/Verticale, Génie Civil, Résines)
-  else if (
-    cleanText.includes('expertise') || cleanText.includes('marquage') || cleanText.includes('sol') || cleanText.includes('parking') || 
-    cleanText.includes('routier') || cleanText.includes('panneau') || cleanText.includes('signalétique') || cleanText.includes('verticale') || 
-    cleanText.includes('chaussée') || cleanText.includes('résine') || cleanText.includes('génie civil') || cleanText.includes('mobilier') || 
-    cleanText.includes('intérieur')
-  ) {
-    addMessage('bot', "Spécialistes depuis 1991, nous maîtrisons 4 grands métiers : la signalisation horizontale (résines à chaud/froid certifiées NF), la signalisation verticale (panneaux de police/directionnels), le génie civil (mobilier urbain) et l'aménagement intérieur.");
+  else if (cleanText.includes('expertise') || cleanText.includes('marquage') || cleanText.includes('sol') || cleanText.includes('parking') || cleanText.includes('routier')) {
+    addMessage('bot', "Nous maîtrisons 4 grands métiers : signalisation horizontale (résines certifiées NF), panneaux verticaux, mobilier urbain et traçage intérieur.");
     createLinkButton("Consulter la page Expertises ➔", "expertises.html");
   } 
-
-  // 8. RECRUTEMENT / EMPLOI
-  else if (cleanText.includes('recrutement') || cleanText.includes('emploi') || cleanText.includes('job') || cleanText.includes('candidature') || cleanText.includes('embauche') || cleanText.includes('travailler') || cleanText.includes('stage')) {
-    addMessage('bot', "GET'COM recherche régulièrement des applicateurs, des traceurs routiers et des chefs d'équipe qualifiés en Île-de-France. Rejoignez une entreprise engagée depuis plus de 30 ans !");
+  else if (cleanText.includes('recrutement') || cleanText.includes('emploi') || cleanText.includes('job') || cleanText.includes('candidature')) {
+    addMessage('bot', "Nous recherchons régulièrement des applicateurs et chefs d'équipe en Île-de-France. Rejoignez une équipe d'expérience !");
     createLinkButton("Déposer une candidature en ligne ➔", "recrutement.html");
   } 
-
-  // 9. HISTOIRE / CLIENTS / RÉASSURANCE
-  else if (cleanText.includes('histoire') || cleanText.includes('expérience') || cleanText.includes('création') || cleanText.includes('ancien') || cleanText.includes('client') || cleanText.includes('confiance')) {
-    addMessage('bot', "Fondé en 1991, GET'COM réalise plus de 450 chantiers par an. De grands acteurs nous font confiance : la RATP, la Ville de Paris, la SNCF, Bouygues, VINCI, Eiffage, Colas, Eurovia ou encore l'Aéroport de Paris.");
-    createLinkButton("Découvrir nos réalisations ➔", "projets.html");
-  }
-
-  // CAS D'ÉCHEC : Le bot n'a pas compris
   else {
-    addMessage('bot', "Désolé, je n'ai pas bien compris votre demande. Je vous invite à joindre directement notre équipe.");
+    addMessage('bot', "Désolé, je n'ai pas bien compris. N'hésitez pas à utiliser des mots simples ou à cliquer sur le bouton de téléphone en haut pour demander un rappel.");
     createLinkButton("Nous contacter ➔", "contact.html");
   }
 }
 
-// Fonction utilitaire pour générer un bouton d'action sous le message du bot
 function createLinkButton(text, url) {
   const body = document.getElementById('chat-body');
   const btn = document.createElement('button');
@@ -355,7 +351,6 @@ function createLinkButton(text, url) {
   body.scrollTop = body.scrollHeight;
 }
 
-// Écouter la touche "Entrée" dans la barre de saisie
 function handleKeyPress(event) {
   if (event.key === 'Enter') {
     handleSend();

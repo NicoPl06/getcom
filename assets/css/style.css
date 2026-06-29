@@ -1015,3 +1015,141 @@ ul  { list-style: none; }
   color: #ffffff;
   transform: translateX(3px);
 }
+
+/* ---------- STYLE DU BOUTON CIRCULAIRE DE RAPPEL DIRECT ---------- */
+.header-phone-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--gold, #E8A020);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.header-phone-btn:hover {
+  background: var(--gold, #E8A020);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ---------- STYLE DU BOUTON CIRCULAIRE DE RAPPEL DIRECT ---------- */
+.header-phone-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--gold, #E8A020);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.header-phone-btn:hover {
+  background: var(--gold, #E8A020);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ---------- STYLE DE LA POP-UP FORMULAIRE INTERNE ---------- */
+.chat-popup-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.chat-popup-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 280px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: popupFadeIn 0.25s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-popup-content h4 {
+  margin: 0 0 6px 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--navy, #0A0F1E);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chat-popup-content p {
+  margin: 0 0 15px 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.chat-popup-content input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.chat-popup-content input:focus {
+  border-color: var(--gold, #E8A020);
+}
+
+.chat-popup-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.chat-popup-actions button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.popup-btn-cancel {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+.popup-btn-cancel:hover { background: #e5e7eb; }
+
+.popup-btn-submit {
+  background: var(--navy, #0A0F1E);
+  color: #fff;
+}
+.popup-btn-submit:hover { background: #111827; }
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
