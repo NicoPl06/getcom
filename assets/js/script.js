@@ -264,28 +264,82 @@ function handleSend() {
   }, 500); // Petit délai pour faire plus naturel
 }
 
-// Logique de reconnaissance des mots-clés
+// Logique de reconnaissance des mots-clés enrichie
 function analyzeMessage(text) {
   const body = document.getElementById('chat-body');
+  
+  // Normalisation du texte pour faciliter la correspondance (minuscules, sans accents complexes si besoin)
+  const cleanText = text.toLowerCase().trim();
 
-  // Mots-clés pour Devis / Rappel
-  if (text.includes('devis') || text.includes('rappel') || text.includes('appeler') || text.includes('téléphone') || text.includes('prix') || text.includes('tarif')) {
-    addMessage('bot', "Pour étudier votre projet, nos équipes sont à votre disposition au 01 48 11 15 35 ou via notre formulaire en ligne.");
+  // 1. DEVIS / TARIFS / CONTACT
+  if (
+    cleanText.includes('devis') || cleanText.includes('rappel') || cleanText.includes('appeler') || 
+    cleanText.includes('téléphone') || cleanText.includes('prix') || cleanText.includes('tarif') || 
+    cleanText.includes('coût') || cleanText.includes('contact') || cleanText.includes('joindre')
+  ) {
+    addMessage('bot', "Pour étudier votre projet de voirie ou signalisation, nos équipes commerciales sont à votre disposition au 01 48 11 15 35 (ou 01 48 11 91 45 pour l'administration) et par mail à contact@getcom.fr.");
     createLinkButton("Aller à la page Contact / Devis ➔", "contact.html");
   } 
-  // Mots-clés pour Expertises
-  else if (text.includes('expertise') || text.includes('marquage') || text.includes('sol') || text.includes('pmr') || text.includes('parking') || text.includes('routier')) {
-    addMessage('bot', "Nous réalisons tous types de marquages au sol réglementaires (PMR, routier, parkings logistiques) et la pose de mobiliers urbains.");
+  
+  // 2. RÉGLEMENTATION PMR & NORMES TECHNIQUES
+  else if (cleanText.includes('pmr') || cleanText.includes('handicapé') || cleanText.includes('norme') || cleanText.includes('réglementaire') || cleanText.includes('iisr') || cleanText.includes('setra')) {
+    addMessage('bot', "Nos marquages PMR respectent strictement les normes : emplacement de 3,30m x 5m, lignes blanches, pictogramme fauteuil réglementaire et signalisation verticale obligatoire (panneau B6a1 + M6h).");
+    createLinkButton("Consulter nos expertises ➔", "expertises.html");
+  }
+
+  // 3. HORAIRES / INTERVENTIONS DE NUIT / 24/7
+  else if (cleanText.includes('nuit') || cleanText.includes('horaire') || cleanText.includes('24h') || cleanText.includes('7j') || cleanText.includes('quand') || cleanText.includes('décalé')) {
+    addMessage('bot', "GET'COM assure des interventions en continu 24h/24 et 7j/7, de jour comme de nuit, afin de minimiser l'impact sur la fluidité du trafic et de garantir une remise en circulation rapide.");
+    createLinkButton("Découvrir nos capacités ➔", "capacites.html");
+  }
+
+  // 4. CERTIFICATIONS & ENGAGEMENTS (MASE, ISO, RSE)
+  else if (
+    cleanText.includes('mase') || cleanText.includes('iso') || cleanText.includes('qualibat') || 
+    cleanText.includes('ecovadis') || cleanText.includes('certification') || cleanText.includes('label') || cleanText.includes('rse')
+  ) {
+    addMessage('bot', "GET'COM est hautement qualifié : nous disposons de la certification MASE (Sécurité/Environnement), de la norme ISO 9001 (Qualité), du label QUALIBAT et d'une évaluation RSE par EcoVadis.");
+    createLinkButton("Voir nos engagements ➔", "index.html#certifs");
+  }
+
+  // 5. ZONE GÉOGRAPHIQUE / ADRESSE
+  else if (cleanText.includes('adresse') || cleanText.includes('lieu') || cleanText.includes('situé') || cleanText.includes('zone') || cleanText.includes('intervenez') || cleanText.includes('idf') || cleanText.includes('gennevilliers') || cleanText.includes('france')) {
+    addMessage('bot', "Notre siège est situé à Gennevilliers (10-12 boulevard Louise Michel). Nous intervenons sur toute l'Île-de-France (56% de nos chantiers) ainsi que sur les départements limitrophes pour les grands projets.");
+    createLinkButton("Nous situer sur la carte ➔", "contact.html");
+  }
+
+  // 6. FLOTTE / PARC MATÉRIEL / ENVIRONNEMENT
+  else if (cleanText.includes('matériel') || cleanText.includes('machine') || cleanText.includes('camion') || cleanText.includes('fourgon') || cleanText.includes('inovi') || cleanText.includes('led') || cleanText.includes('écologique') || cleanText.includes('crit')) {
+    addMessage('bot', "Nous possédons un parc éco-responsable conforme aux exigences ZFE (Crit'Air). Nos fourgons traceurs éco-INOVI réduisent les émissions polluantes et nous utilisons des balisages lumineux LED haute visibilité.");
+    createLinkButton("Découvrir notre flotte éco ➔", "capacites.html");
+  }
+
+  // 7. EXPERTISES GLOBALES (Signalisation Horizontale/Verticale, Génie Civil, Résines)
+  else if (
+    cleanText.includes('expertise') || cleanText.includes('marquage') || cleanText.includes('sol') || cleanText.includes('parking') || 
+    cleanText.includes('routier') || cleanText.includes('panneau') || cleanText.includes('signalétique') || cleanText.includes('verticale') || 
+    cleanText.includes('chaussée') || cleanText.includes('résine') || cleanText.includes('génie civil') || cleanText.includes('mobilier') || 
+    cleanText.includes('intérieur')
+  ) {
+    addMessage('bot', "Spécialistes depuis 1991, nous maîtrisons 4 grands métiers : la signalisation horizontale (résines à chaud/froid certifiées NF), la signalisation verticale (panneaux de police/directionnels), le génie civil (mobilier urbain) et l'aménagement intérieur.");
     createLinkButton("Consulter la page Expertises ➔", "expertises.html");
   } 
-  // Mots-clés pour Recrutement
-  else if (text.includes('recrutement') || text.includes('emploi') || text.includes('job') || text.includes('candidature') || text.includes('embauche') || text.includes('travailler')) {
-    addMessage('bot', "GET'COM recherche régulièrement des applicateurs, traceurs routiers et chefs d'équipe qualifiés en Île-de-France.");
+
+  // 8. RECRUTEMENT / EMPLOI
+  else if (cleanText.includes('recrutement') || cleanText.includes('emploi') || cleanText.includes('job') || cleanText.includes('candidature') || cleanText.includes('embauche') || cleanText.includes('travailler') || cleanText.includes('stage')) {
+    addMessage('bot', "GET'COM recherche régulièrement des applicateurs, des traceurs routiers et des chefs d'équipe qualifiés en Île-de-France. Rejoignez une entreprise engagée depuis plus de 30 ans !");
     createLinkButton("Déposer une candidature en ligne ➔", "recrutement.html");
   } 
+
+  // 9. HISTOIRE / CLIENTS / RÉASSURANCE
+  else if (cleanText.includes('histoire') || cleanText.includes('expérience') || cleanText.includes('création') || cleanText.includes('ancien') || cleanText.includes('client') || cleanText.includes('confiance')) {
+    addMessage('bot', "Fondé en 1991, GET'COM réalise plus de 450 chantiers par an. De grands acteurs nous font confiance : la RATP, la Ville de Paris, la SNCF, Bouygues, VINCI, Eiffage, Colas, Eurovia ou encore l'Aéroport de Paris.");
+    createLinkButton("Découvrir nos réalisations ➔", "projets.html");
+  }
+
   // CAS D'ÉCHEC : Le bot n'a pas compris
   else {
-    addMessage('bot', "Désolé, je n'ai pas bien compris votre demande. Je vous invite à joindre directement notre équipe via notre page contact.");
+    addMessage('bot', "Désolé, je n'ai pas bien compris votre demande. Je vous invite à joindre directement notre équipe.");
     createLinkButton("Nous contacter ➔", "contact.html");
   }
 }
