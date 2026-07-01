@@ -661,6 +661,9 @@ ul  { list-style: none; }
   border: 1px solid var(--gray-100);
   overflow: hidden;
   transition: box-shadow var(--transition), border-color var(--transition);
+  display: flex;          /* Ajouté */
+  flex-direction: column; /* Ajouté */
+  height: 100%;           /* Ajouté : Force toutes les cartes à avoir la même hauteur */
 }
 .expertise-card:hover {
   box-shadow: 0 25px 50px rgba(0,0,0,.25);
@@ -699,11 +702,14 @@ ul  { list-style: none; }
   flex-shrink: 0;
   margin-top: .375rem;
 }
+/* 3. On s'assure que la barre reste collée tout en bas */
 .card-bar {
   height: .25rem;
   background: linear-gradient(to right, var(--navy), var(--gold));
-  transform: scaleX(0); transform-origin: left;
+  transform: scaleX(0); 
+  transform-origin: left;
   transition: transform var(--transition);
+  margin-top: auto;       /* Ajouté : Force la barre à s'aligner tout en bas, même s'il y a moins de texte */
 }
 .expertise-card:hover .card-bar { transform: scaleX(1); }
 
