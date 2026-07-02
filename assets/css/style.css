@@ -1159,3 +1159,129 @@ ul  { list-style: none; }
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ---------- STYLE DE LA MODALE MENTIONS LÉGALES ---------- */
+.modal {
+  display: none; /* Caché par défaut */
+  position: fixed;
+  z-index: 9999; /* Au-dessus de tout le contenu (nav, chatbox, etc.) */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(10, 15, 30, 0.6); /* Arrière-plan marine transparent */
+  backdrop-filter: blur(5px); /* Effet flouté moderne arrière-plan */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Affichage actif de la modale activée en JS */
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--white, #ffffff);
+  margin: auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: var(--radius, 12px);
+  width: 90%;
+  max-width: 750px;
+  max-height: 80vh; /* Ne dépasse jamais 80% de la hauteur de l'écran */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bouton X de fermeture en haut à droite */
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: var(--gray-500, #6B7280);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color var(--transition, 0.2s);
+}
+
+.modal-close-btn:hover {
+  color: var(--gold, #E8A020);
+}
+
+.modal-content h2 {
+  font-family: var(--font-main, 'Oswald', sans-serif);
+  color: var(--navy, #0A0F1E);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 3px solid var(--gold, #E8A020);
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Zone de texte scrollable à l'intérieur */
+.modal-body {
+  overflow-y: auto;
+  padding-right: 1rem;
+  text-align: left;
+}
+
+/* Personnalisation de la barre de défilement interne */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-body::-webkit-scrollbar-track {
+  background: var(--gray-100, #F3F4F6);
+  border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--gray-400, #9CA3AF);
+  border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--gold, #E8A020);
+}
+
+.modal-body h3 {
+  font-family: var(--font-main, 'Oswald', sans-serif);
+  color: var(--navy, #0A0F1E);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-body p {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  color: var(--gray-700, #374151);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.modal-date {
+  margin-top: 2rem;
+  color: var(--gray-500, #6B7280);
+}
+
+/* Pied de la modale avec le bouton Fermer */
+.modal-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--gray-100, #F3F4F6);
+  padding-top: 1rem;
+}
+
+.modal-footer .btn {
+  padding: 0.6rem 2rem;
+  cursor: pointer;
+}

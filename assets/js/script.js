@@ -830,3 +830,38 @@ function handleKeyPress(event) {
     handleSend();
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("legalModal");
+  const btn = document.getElementById("legalBtn");
+  const closeCross = document.querySelector(".modal-close-btn");
+  const closeBtn = document.getElementById("closeLegalBtn");
+
+  // Ouvrir la modale au clic sur "Mentions légales"
+  if (btn && modal) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault(); // Empêche de remonter la page avec le #
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden"; // Bloque le scroll du site derrière
+    });
+  }
+
+  // Fonction de fermeture
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = ""; // Réactive le scroll du site
+  }
+
+  // Fermer via la croix X
+  if (closeCross) closeCross.addEventListener("click", closeModal);
+
+  // Fermer via le gros bouton jaune "Fermer"
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  // Fermer si l'utilisateur clique n'importe où en dehors de la boîte blanche
+  window.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+});

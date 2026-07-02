@@ -10,6 +10,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
+<div id="legalModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close-btn">&times;</span>
+    
+    <h2>Mentions Légales</h2>
+    
+    <div class="modal-body">
+      <h3>Éditeur du site</h3>
+      <p><strong>Raison sociale :</strong> GET'COM<br>
+      <strong>Adresse :</strong> 10-12 boulevard Louise Michel, Bâtiment B2, 92230 Gennevilliers, France<br>
+      <strong>Téléphone :</strong> 01 48 11 15 35<br>
+      <strong>Email :</strong> contact@getcom.fr</p>
+
+      <h3>Directeur de la publication</h3>
+      <p>Le directeur de la publication du site est le représentant légal de la société GET'COM.</p>
+
+      <h3>Hébergement</h3>
+      <p>Le site est hébergé par un prestataire professionnel d'hébergement web.</p>
+
+      <h3>Propriété intellectuelle</h3>
+      <p>L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, sons, logiciels) est la propriété exclusive de GET'COM ou de ses partenaires, à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.</p>
+      <p>Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l'accord exprès par écrit de GET'COM. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+
+      <h3>Protection des données personnelles</h3>
+      <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.</p>
+      <p>Les informations recueillies sur ce site sont enregistrées dans un fichier informatisé par GET'COM pour la gestion des demandes de contact et de devis. Elles sont conservées pendant la durée nécessaire à la gestion de votre demande et sont destinées au service commercial de GET'COM.</p>
+      <p>Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez nous contacter par email à l'adresse : contact@getcom.fr ou par courrier à l'adresse : GET'COM, 10-12 boulevard Louise Michel, Bâtiment B2, 92230 Gennevilliers.</p>
+
+      <h3>Cookies</h3>
+      <p>Ce site peut utiliser des cookies pour améliorer l'expérience utilisateur et analyser le trafic. Vous pouvez configurer votre navigateur pour refuser les cookies ou être averti de leur utilisation.</p>
+
+      <h3>Responsabilité</h3>
+      <p>GET'COM s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, GET'COM ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.</p>
+      <p>GET'COM ne pourra être tenue responsable des dommages directs et indirects consécutifs à l'accès au site et à son utilisation.</p>
+
+      <h3>Liens hypertextes</h3>
+      <p>Le site peut contenir des liens hypertextes vers d'autres sites présents sur le réseau Internet. Les liens vers ces autres ressources vous font quitter le site. GET'COM ne saurait être responsable du contenu de ces sites externes.</p>
+
+      <h3>Droit applicable</h3>
+      <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+      
+      <p class="modal-date"><em>Dernière mise à jour : 02/07/2026</em></p>
+    </div>
+
+    <div class="modal-footer">
+      <button id="closeLegalBtn" class="btn btn-gold">Fermer</button>
+    </div>
+  </div>
+</div>
+
 <body>
 
   <!-- ========== NAVIGATION ========== -->
@@ -270,7 +321,7 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>© 2026 GET'COM. Tous droits réservés. | Le spécialiste de la voirie et de la signalisation depuis 1991</p>
-        <a href="#" class="footer-legal">Mentions légales</a>
+        <a href="#" class="footer-legal" id="legalBtn">Mentions légales</a>
       </div>
     </div>
   </footer>
