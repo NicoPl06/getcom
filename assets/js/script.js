@@ -276,7 +276,7 @@ function submitPhonePopup(event) {
   })
   .then(response => {
     if (response.ok) {
-      addMessage("bot", `C'est parfait ! Votre demande a bien été envoyée. Un conseiller GET'COM vous rappellera rapidement au ${phoneValue}.`);
+      addMessage("bot", `C'est parfait ! Votre demande a bien été envoyée. Un chargé de projets GET'COM vous rappellera rapidement au ${phoneValue}.`);
       form.reset(); // Vide les champs du formulaire pour la prochaine fois
     } else {
       addMessage("bot", "Une erreur est survenue. Veuillez nous contacter directement au 01 48 11 15 35.");
