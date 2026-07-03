@@ -87,7 +87,6 @@
     </div>
   </nav>
 
-<!-- ========== PAGE HERO ========== -->
   <section class="page-hero">
     <div class="page-hero-bg" style="background-image:url('assets/images/expertises/Expertise.jpg')"></div>
     <div class="page-hero-overlay"></div>
@@ -232,11 +231,7 @@
       <h2>Des réponses à vos questions techniques</h2>
       <p class="section-desc">Les spécifications réglementaires et opérationnelles de nos interventions.</p>
     </div>
-    
-    <!-- Liste verticale de bandeaux rectangulaires très fins -->
     <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem;">
-      
-      <!-- Bandeau Question 1 -->
       <div style="background: var(--white); padding: 1.25rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border-left: 4px solid var(--navy);">
         <h4 style="font-family: var(--font-main); color: var(--navy); margin-bottom: 0.25rem; font-size: 1.05rem;">
           Quelles sont les normes applicables pour un marquage PMR réglementaire ?
@@ -246,7 +241,6 @@
         </p>
       </div>
       
-      <!-- Bandeau Question 2 -->
       <div style="background: var(--white); padding: 1.25rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border-left: 4px solid var(--gold);">
         <h4 style="font-family: var(--font-main); color: var(--navy); margin-bottom: 0.25rem; font-size: 1.05rem;">
           Intervenez-vous de nuit sur les axes routiers à fort trafic ?
@@ -255,7 +249,6 @@
           Oui, nos équipes interviennent en horaires décalés et de nuit (24h/24, 7j/7) pour préserver la fluidité du trafic. Chaque chantier intègre un balisage lourd rétro-réfléchissant (classe 2/3), des panneaux AK5 à feux à éclats et des véhicules de protection d'urgence.
         </p>
       </div>
-
 
       <div style="background: var(--white); padding: 1.25rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border-left: 4px solid var(--navy);">
         <h4 style="font-family: var(--font-main); color: var(--navy); margin-bottom: 0.25rem; font-size: 1.05rem;">
@@ -277,14 +270,10 @@
   </div>
 </section>
 
-<!-- Fenêtre principale du Chatbot -->
 <div id="chat-box" style="display: none; position: fixed; bottom: 95px; right: 25px; width: 340px; height: 460px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); flex-direction: column; overflow: hidden; z-index: 9999; font-family: 'Inter', sans-serif; border: 1px solid rgba(0,0,0,0.1);">
-  
-  <!-- En-tête avec titre, bouton de rappel circulaire et fermeture -->
-  <div style="background: var(--navy, #0A0F1E); color: #fff; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; letter-spacing: 0.5px;">
+    <div style="background: var(--navy, #0A0F1E); color: #fff; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; letter-spacing: 0.5px;">
     <span>Assistant GET'COM</span>
     <div style="display: flex; align-items: center; gap: 12px;">
-      <!-- Bouton Téléphone qui ouvre la pop-up -->
       <button onclick="openPhonePopup()" class="header-phone-btn" title="Demander un rappel">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </button>
@@ -292,25 +281,14 @@
     </div>
   </div>
   
-  <!-- Corps du chat -->
   <div id="chat-body" style="padding: 15px; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 10px; background: #f9fafb; position: relative;">
-    
-    <!-- POP-UP AVEC FORMULAIRE FORMSPREE DIRECT -->
     <div id="phone-popup" class="chat-popup-overlay">
-      <!-- Le formulaire Formspree entoure le contenu de la pop-up -->
       <form id="formspree-popup-form" action="https://formspree.io/f/mbdvkvga" method="POST" class="chat-popup-content" onsubmit="submitPhonePopup(event)">
         <h4>Demande de rappel</h4>
         <p>Laissez vos coordonnées pour être recontacté par GET'COM.</p>
-        
-        <!-- Input Nom (Optionnel mais recommandé pour vos emails) -->
         <input type="text" name="Nom / Entreprise" placeholder="Votre nom ou entreprise" style="margin-bottom: 10px;">
-        
-        <!-- Input Téléphone (Obligatoire) -->
         <input type="tel" id="popup-phone-input" name="Téléphone à rappeler" placeholder="Ex: 06 12 34 56 78" required>
-        
-        <!-- Message caché automatique pour le sujet de l'email -->
         <input type="hidden" name="_subject" value="Nouveau rappel demandé depuis le Chatbot GET'COM">
-
         <div class="chat-popup-actions">
           <button type="button" onclick="closePhonePopup()" class="popup-btn-cancel">Annuler</button>
           <button type="submit" class="popup-btn-submit">Ok</button>
@@ -320,7 +298,6 @@
 
   </div>
 
-  <!-- Zone d'envoi de texte standard -->
   <div style="padding: 10px; background: #fff; border-top: 1px solid #eee; display: flex; gap: 8px;">
     <input type="text" id="chat-input" onkeypress="handleKeyPress(event)" placeholder="Posez votre question ici..." style="flex-grow: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.85rem; outline: none; font-family: 'Inter', sans-serif;">
     <button onclick="handleSend()" style="background: var(--navy, #0A0F1E); color: #fff; border: none; padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 500;">Ok</button>
